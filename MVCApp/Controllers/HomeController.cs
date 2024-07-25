@@ -10,6 +10,7 @@ namespace MVCApp.Controllers
     {
         public ActionResult Index()
         {
+            Console.WriteLine("hello");
             return View();
         }
 
