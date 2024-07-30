@@ -29,11 +29,14 @@ jobs:
     - name: Publish
       run: msbuild /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile /p:OutputPath=./output
 
-    - name: Upload artifact for deployment job
+    - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: .net-app
-        path: ${{env.DOTNET_ROOT}}/myapp
+        path: ./myapp
+        if-no-files-found: warn
+        compression-level: 6
+        overwrite: false
 
   deploy:
     runs-on: ubuntu-latest
